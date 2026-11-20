@@ -3,8 +3,8 @@
 柴犬総研 / Shibainu Soken による公開データと学校現場の課題を扱う静的サイトMVP。
 
 ## 公開方法（GitHub Pages）
-1. 新しい公開リポジトリ（例 `remote-work-atlas`）を作成する。
-2. このフォルダのファイルを **リポジトリ直下** にアップロードする。
+1. リポジトリ `nobby11334/remote-work-atlas` にサイトファイルは反映済み。
+2. `main` ブランチ直下の `index.html` を公開対象にする。
 3. Settings → Pages → Build and deployment → Deploy from a branch → `main` / `(root)` を指定する。
 4. 数分後に `https://<ユーザー名>.github.io/remote-work-atlas/` で公開される。
 
@@ -26,4 +26,4 @@
 `data/school_survey_template.csv` に、学校側に正式な確認・公開同意を得たデータを記載する。個人や特定の卒業生を識別できる情報は公開リポジトリに入れない。報告数を「発生率」と表記しない。
 
 ## ブランド素材
-`assets/shibainu-soken-logo.webp` は会話上で承認された再デザイン画像をサイト向けにトリミングしたもの。SVG等の厳密なベクターデータではない。元ロゴとの完全な同一性は保証しない。
+`assets/shibainu-soken-logo.svg` と `assets/shibainu-symbol.svg` は公開時の暫定ベクター版です。会話上で承認されたラスターロゴそのものではなく、ブランドを近似した素材です。承認済みロゴへの差し替えが必要です。
