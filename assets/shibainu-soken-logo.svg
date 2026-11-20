@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="280" viewBox="0 0 1050 280" role="img" aria-label="柴犬総研 SHIBAINU SOKEN">
+<rect width="1050" height="280" fill="#fff"/>
+<g transform="translate(14 8)" stroke="#1f1c17" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="125" cy="128" r="112" fill="none" stroke-width="15" stroke-dasharray="660 44" transform="rotate(-50 125 128)"/>
+<path fill="#1f1c17" stroke-width="3" d="M40 194Q47 119 77 92L83 25Q113 34 126 77Q157 57 178 86Q202 102 207 128Q217 144 198 155Q175 166 158 158Q143 191 117 213L76 231Z"/>
+<path fill="#fff" stroke="none" d="M66 176Q98 144 125 135Q148 115 165 124Q184 139 197 129Q188 164 161 165Q145 197 105 211L77 224Z"/>
+<path d="M90 84L89 47L112 86M154 87L165 65L171 98" fill="#fff" stroke-width="4"/>
+<path d="M148 115q9 -8 18 0" fill="none" stroke-width="4"/><path d="M185 126l12 2 -8 6z" fill="#1f1c17" stroke="none"/>
+<path d="M170 149q15 11 29-1" stroke-width="3" fill="none"/>
+</g>
+<g fill="#1f1c17"><text x="270" y="153" font-size="112" font-family="serif" font-weight="900" letter-spacing="2">柴犬総研</text><text x="295" y="209" font-size="36" font-family="Georgia,serif" letter-spacing="8">SHIBAINU SOKEN</text><text x="300" y="249" font-size="25" font-family="sans-serif" letter-spacing="2">発注者側ITアーキテクト</text></g>
+<rect x="982" y="180" width="54" height="54" rx="9" fill="#b72f20"/><text x="987" y="225" font-size="39" font-family="serif" fill="white">柴</text></svg>
