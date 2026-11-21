@@ -1,0 +1,16 @@
+name: Probe telework table 35 originals
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/probe_telework_excel.py"
+      - ".github/workflows/probe-telework.yml"
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/probe_telework_excel.py
