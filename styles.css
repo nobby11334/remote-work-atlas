@@ -35,3 +35,17 @@
 .management-conclusion p{color:#dce9dd}
 .management-conclusion .footnote{color:#bbcdbd}
 @media(max-width:850px){.management-split{grid-template-columns:1fr}}
+
+
+/* Prefecture observations (2025 MIC survey; secondary transcription) */
+.pref-list-panel{margin:24px auto 0}
+.pref-ranking{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 30px;margin-top:18px}
+.pref-ranking-row{display:grid;grid-template-columns:100px 1fr 60px;gap:10px;align-items:center;padding:10px 4px;border-bottom:1px solid #e6ede5;cursor:pointer;font-size:13px}
+.pref-ranking-row:hover{background:#f1f6f0}
+.pref-ranking-row strong{text-align:right;color:#2a5a3b;font-size:14px}
+.pref-ranking-track{height:9px;background:#e8efea;border-radius:20px;overflow:hidden}
+.pref-ranking-fill{height:100%;display:block;background:#5f8b6c;border-radius:20px}
+.pref-disclaimer{font-size:11px!important;color:#7e8a81!important;margin-top:12px!important}
+.no-data-icon.pref-number{border-radius:12px;width:auto;padding:0 14px;font-size:24px;min-width:96px}
+.analysis-item a{font-size:12px;font-weight:700;color:#3d7050}
+@media(max-width:700px){.pref-ranking{grid-template-columns:1fr}.pref-ranking-row{grid-template-columns:93px 1fr 54px;font-size:12px}}
