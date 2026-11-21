@@ -76,3 +76,23 @@
 .evidence-state.not_collected{background:#f0f0f0;color:#636363}
 @media(max-width:900px){.evidence-streams{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.evidence-streams{grid-template-columns:1fr}}
+
+
+/* Regional youth employment, gender and security governance */
+.workforce-section .panel a,.workforce-quote a,.workforce-conclusion a{color:#396f4f;font-weight:700;font-size:13px}
+.workforce-stats,.workforce-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:21px}
+.workforce-stats .panel{display:flex;flex-direction:column}
+.workforce-stats strong{font-size:58px;line-height:1.25;letter-spacing:-.05em;color:#356a48;margin:12px 0}
+.workforce-stats strong span{font-size:25px}
+.workforce-stats .panel h3{line-height:1.5}
+.workforce-stats .panel p{font-size:13px;color:#657569;flex:1}
+.workforce-quote{padding:28px 30px;margin-bottom:21px;border-radius:12px;background:#f3f7ef;border-left:5px solid #5d8d67}
+.workforce-quote h3{font-size:clamp(19px,2.4vw,26px)}
+.workforce-quote p{color:#5b695c}
+.workforce-two .panel p{font-size:14px;color:#5e705f}
+.workforce-conclusion{background:#1c3829;color:#f8fbf8;border-radius:12px;padding:28px}
+.workforce-conclusion h3{font-size:clamp(20px,2.5vw,27px)}
+.workforce-conclusion p{color:#d5e2d8}
+.workforce-conclusion a{color:#b1e0bd}
+@media(max-width:800px){.workforce-stats,.workforce-two{grid-template-columns:1fr}}
+@media(max-width:620px){.workforce-stats strong{font-size:46px}.workforce-quote,.workforce-conclusion{padding:20px}}
