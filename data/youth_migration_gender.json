@@ -1,0 +1,24 @@
+{
+  "dataset_id": "regional_youth_gender_outmigration",
+  "name": "地域における10〜20代人口に対する転出超過数の割合",
+  "unit": "%",
+  "years": [
+    2024,
+    2025
+  ],
+  "female": [
+    1.32,
+    1.34
+  ],
+  "male": [
+    1.19,
+    1.19
+  ],
+  "scope": "内閣府男女共同参画白書の定義する地域集計（全国の都道府県個別値ではない）",
+  "source": "https://www.gender.go.jp/about_danjo/whitepaper/r08/zentai/html/honpen/b1_s03_00.html",
+  "source_csv": "https://www.gender.go.jp/about_danjo/whitepaper/r08/zentai/html/honpen/csv/zuhyo03-02.csv",
+  "source_figure": "3-2図",
+  "verified": "official_text_direct",
+  "updated_at": "2026-11-21",
+  "note": "女性2025年1.34%、前年差+0.02pt → 2024年1.32%。男性2025年1.19%、前年と同様 → 2024年1.19%。出社回帰、フルリモートの有無、出生率との因果関係は検証していない。"
+}
