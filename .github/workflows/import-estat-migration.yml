@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - "scripts/import_estat_migration.py"
+      - "scripts/import_estat_migration_2024.py"
       - ".github/workflows/import-estat-migration.yml"
 permissions:
   contents: write
@@ -18,16 +19,18 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Parse official 2025 annual age-and-sex Excel
-        run: python3 scripts/import_estat_migration.py
+      - name: Parse official 2024 and 2025 annual age-and-sex Excels
+        run: |
+          python3 scripts/import_estat_migration_2024.py
+          python3 scripts/import_estat_migration.py
       - name: Validate all published data
         run: python3 scripts/validate_data.py
       - name: Commit when official Excel changed
         run: |
-          if ! git diff --quiet -- data/prefecture_youth_migration_2025.json || [ -n "$(git ls-files --others --exclude-standard data/prefecture_youth_migration_2025.json)" ]; then
+          if ! git diff --quiet -- data/prefecture_youth_migration_202*.json || [ -n "$(git ls-files --others --exclude-standard data/prefecture_youth_migration_202*.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/prefecture_youth_migration_2025.json
+            git add data/prefecture_youth_migration_202*.json
             git commit -m "data: import official prefecture 20s gender net migration"
             git push
           else
