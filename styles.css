@@ -109,3 +109,25 @@
 .youth-fill{display:block;height:100%;border-radius:4px}
 .youth-fill.female{background:#ad668a}.youth-fill.male{background:#6089a2}
 @media(max-width:800px){.youth-year{grid-template-columns:48px 1fr;gap:9px}.youth-bar-line{grid-column:2}.youth-year>strong{grid-row:1 / span 2}}
+
+
+/* Official age-sex prefecture migration explorer */
+.migration-filters{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.migration-filters label{font-size:12px;font-weight:700;flex:1;min-width:125px}
+.migration-filters select{margin-top:5px}
+.migration-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:20px 0 25px}
+.migration-kpi{background:#f2f7f2;border-radius:8px;padding:12px 14px}
+.migration-kpi span{display:block;font-size:11px;color:#657568}
+.migration-kpi b{display:block;font-size:16px;margin-top:5px;color:#264d37}
+.migration-chart{display:grid;gap:3px}
+.migration-pref-row{display:grid;grid-template-columns:95px 1fr 1fr 135px;gap:3px;align-items:center;font-size:12px;border-bottom:1px solid #edf1ed;min-height:26px}
+.migration-pref-row>span:first-child{font-weight:600}
+.migration-pref-row>div{height:18px;background:#f4f7f3;display:flex;align-items:center}
+.migration-neg{justify-content:flex-end;border-right:1px solid #859b8b}
+.migration-pos{justify-content:flex-start;border-left:1px solid #859b8b}
+.migration-fill{display:block;height:14px;border-radius:2px;background:#4f8a64}
+.migration-neg .migration-fill{background:#af7863}
+.migration-pref-row b{text-align:right;white-space:nowrap;font-size:12px}
+.migration-pref-row small{display:inline-block;margin-left:5px;color:#7a897d;font-size:10px}
+@media(max-width:900px){.migration-stats{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.migration-pref-row{grid-template-columns:65px 1fr 1fr 67px;font-size:10px}.migration-pref-row b{font-size:10px}.migration-pref-row small{display:block;margin-left:0;font-size:9px}.migration-stats{gap:6px}.migration-kpi{padding:10px}.migration-kpi b{font-size:13px}}
