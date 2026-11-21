@@ -1,0 +1,124 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-11-21",
+  "data_status": "verified_manual_baseline",
+  "sources": [
+    {
+      "id": "persol_2026",
+      "title": "パーソル総合研究所「テレワークに関する調査（2026年）」",
+      "url": "https://rc.persol-group.co.jp/thinktank/data/telework-survey2026/",
+      "published": "2026-09-09",
+      "population": "20～59歳の正社員（主に正社員の集計）",
+      "sample_size": 26014
+    },
+    {
+      "id": "mlit_2025",
+      "title": "国土交通省「令和7年度テレワーク人口実態調査」",
+      "url": "https://www.mlit.go.jp/report/press/toshikankyoteleworkr7.html",
+      "published": "2026-03-24",
+      "population": "雇用型就業者",
+      "sample_size": 40000
+    }
+  ],
+  "indicators": [
+    {
+      "id": "persol_usage",
+      "source": "persol_2026",
+      "label": "テレワーク実施率",
+      "unit": "%",
+      "population": "全国・正社員",
+      "year": 2026,
+      "value": 21.4,
+      "prior_year": 2025,
+      "prior_value": 22.5,
+      "note": "2026年7月調査。前年との差は-1.1ポイント。"
+    },
+    {
+      "id": "persol_office",
+      "source": "persol_2026",
+      "label": "原則出社の指示",
+      "unit": "%",
+      "population": "全国・正社員",
+      "year": 2026,
+      "value": 24.6,
+      "note": "従業員が回答した勤務先の方針"
+    },
+    {
+      "id": "persol_wish",
+      "source": "persol_2026",
+      "label": "テレワーク継続希望",
+      "unit": "%",
+      "population": "現にテレワーク実施中の正社員",
+      "year": 2026,
+      "value": 81.6,
+      "note": "実施者のうち継続したい人"
+    },
+    {
+      "id": "persol_frequency_down",
+      "source": "persol_2026",
+      "label": "前年よりテレワーク頻度が減った",
+      "unit": "%",
+      "population": "テレワーク実施者",
+      "year": 2026,
+      "value": 32.7,
+      "note": "本人回答"
+    },
+    {
+      "id": "persol_it",
+      "source": "persol_2026",
+      "label": "情報通信業のテレワーク実施率",
+      "unit": "%",
+      "population": "正社員・情報通信業",
+      "year": 2026,
+      "value": 55.7
+    },
+    {
+      "id": "persol_tokyo",
+      "source": "persol_2026",
+      "label": "東京都のテレワーク実施率",
+      "unit": "%",
+      "population": "正社員・東京都",
+      "year": 2026,
+      "value": 35.5
+    },
+    {
+      "id": "persol_kanto",
+      "source": "persol_2026",
+      "label": "関東のテレワーク実施率",
+      "unit": "%",
+      "population": "正社員・関東",
+      "year": 2026,
+      "value": 29.9
+    },
+    {
+      "id": "mlit_last_year",
+      "source": "mlit_2025",
+      "label": "直近1年間のテレワーク実施率",
+      "unit": "%",
+      "population": "全国・雇用型就業者",
+      "year": 2025,
+      "value": 16.8,
+      "prior_year": 2024,
+      "prior_value": 15.6,
+      "note": "2025年10月調査、前年から+1.2ポイント"
+    },
+    {
+      "id": "mlit_ever",
+      "source": "mlit_2025",
+      "label": "これまでテレワークをしたことがある雇用型就業者",
+      "unit": "%",
+      "population": "全国・雇用型就業者",
+      "year": 2025,
+      "value": 25.2,
+      "prior_year": 2024,
+      "prior_value": 24.6,
+      "note": "過去経験を含む指標。直近1年間実施率とは異なる"
+    }
+  ],
+  "caveats": [
+    "テレワーク実施率はフルリモート採用率ではありません。",
+    "複数調査の母集団・設問・調査時点が違うため数値を直接比較しません。",
+    "都道府県ごとのフルリモート就職者・出社回帰による転居者の人数は未収集です。",
+    "差の単位は％ではなくパーセントポイントです。"
+  ]
+}
