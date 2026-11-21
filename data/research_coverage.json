@@ -1,0 +1,73 @@
+{
+  "updated_at": "2026-11-21",
+  "question": "企業の出社回帰は、地方在住の新卒就職機会と卒業後転居にどう影響したか",
+  "streams": [
+    {
+      "id": "pref_telework",
+      "name": "都道府県別テレワーク経験率",
+      "scope": "全国47都道府県",
+      "unit": "企業等に勤める人の過去1年の経験率（%）",
+      "coverage": "2025年",
+      "status": "secondary_transcribed",
+      "source": "https://www.e-stat.go.jp/stat-search/files?stat_infid=000040458853",
+      "limitation": "原CSVとの全件突合未了。新卒採用率ではない",
+      "update": "年次公表監視"
+    },
+    {
+      "id": "pref_historical",
+      "name": "2024年都道府県別テレワーク経験率",
+      "scope": "全国47都道府県",
+      "unit": "同名設問の経験率（%）",
+      "coverage": "表35公表済み、数値未収録",
+      "status": "awaiting_raw_data_validation",
+      "source": "https://www.e-stat.go.jp/stat-search/files?stat_infid=000040278972",
+      "limitation": "年次間の調査設計、母集団、算出方式を検証してから前年差を表示",
+      "update": "手作業での検証待ち"
+    },
+    {
+      "id": "company_regions",
+      "name": "都市・地方企業テレワーク導入率",
+      "scope": "都市部・地方部・全国",
+      "unit": "常用雇用者100人以上企業の導入率（%）",
+      "coverage": "2019–2024年",
+      "status": "published",
+      "source": "https://www.cas.go.jp/jp/seisaku/chiikihatarakikata/contents/20260319/04_shiryou04.pdf",
+      "limitation": "個人の勤務実態、新卒採用、転居と直接比較できない",
+      "update": "出典の新調査監視"
+    },
+    {
+      "id": "school_employment",
+      "name": "地方学校からの居住地非制限求人への就職",
+      "scope": "高校・専門学校・高専・大学",
+      "unit": "学校年度別の卒業生数と就職者数",
+      "coverage": "未収集",
+      "status": "not_collected",
+      "source": null,
+      "limitation": "学校の就職資料では勤務地条件やフルリモート可否が取得できない場合がある",
+      "update": "学校向け調査設計済み"
+    },
+    {
+      "id": "relocation",
+      "name": "勤務方針変更による卒業生の転居",
+      "scope": "卒業生の匿名集計",
+      "unit": "件数・学校別回答母数",
+      "coverage": "未収集",
+      "status": "not_collected",
+      "source": null,
+      "limitation": "転居の主原因・複合要因・企業の例外措置確認が必要",
+      "update": "学校向け調査設計済み"
+    },
+    {
+      "id": "job_posts",
+      "name": "勤務地制限なしフルリモート求人",
+      "scope": "全国・新卒求人",
+      "unit": "募集件数・条件変更率・母数",
+      "coverage": "未収集",
+      "status": "not_collected",
+      "source": null,
+      "limitation": "重複求人・常時掲載・求人メディア構成変化・実際の採用可否を調整する必要",
+      "update": "求人サービスの公的データ・利用規約調査が必要"
+    }
+  ],
+  "methodology": "出所・統計母集団・時点・地理単位・推定上の限界が揃ったものだけ比較。原因と相関を区別し、未収集をゼロ扱いしない。"
+}
