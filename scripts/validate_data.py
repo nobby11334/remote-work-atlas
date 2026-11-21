@@ -32,5 +32,18 @@ def check():
  assert all(0<=v<=5 for k in ("female","male") for v in migration[k])
  assert migration["source"].startswith("https://www.gender.go.jp/")
  assert migration["verified"].startswith("official_text")
+ for year in (2024,2025):
+  migration=load(f"data/prefecture_youth_migration_{year}.json")
+  assert migration["year"]==year and len(migration["prefectures"])==47
+  rows=migration["prefectures"]
+  assert len(set(x["code"] for x in rows))==47
+  assert migration["verified"].startswith("official_xlsx_auto_parsed")
+  assert len(migration["source_sha256"])==64
+  for key in ("male_20_24","male_25_29","female_20_24","female_25_29"):
+   assert all(isinstance(x[key],int) for x in rows)
+   assert sum(x[key] for x in rows)==0,("unbalanced",year,key)
+  for x in rows:
+   assert x["male_20s"]==x["male_20_24"]+x["male_25_29"]
+   assert x["female_20s"]==x["female_20_24"]+x["female_25_29"]
  print("PASS: 47 distinct prefectures, sources, bounds, timeseries, evidence-gap labels")
 if __name__=="__main__":check()
