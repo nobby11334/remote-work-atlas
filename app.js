@@ -83,3 +83,23 @@ async function loadRegionalCompanyTrend(){
  }catch(e){console.error('regional trend',e);insight.textContent='企業導入率のデータを取得できませんでした。';}
 }
 loadRegionalCompanyTrend();
+
+async function loadEvidenceCoverage(){
+ const root=document.getElementById('evidence-streams');if(!root)return;
+ try{
+ const r=await fetch('data/research_coverage.json',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
+ const d=await r.json();root.replaceChildren();
+ const statusMap={published:'公表データ収録済',secondary_transcribed:'二次転記・原表未照合',awaiting_raw_data_validation:'原表の検証待ち',not_collected:'調査データ未収集'};
+ d.streams.forEach(stream=>{
+  const el=document.createElement('article');el.className='evidence-card';
+  const state=document.createElement('span');state.className='evidence-state '+stream.status;state.textContent=statusMap[stream.status]||stream.status;
+  const h=document.createElement('h3');h.textContent=stream.name;
+  const coverage=document.createElement('p');coverage.textContent='対象：'+stream.scope+' / 収録：'+stream.coverage;
+  const note=document.createElement('p');note.className='footnote';note.textContent=stream.limitation;
+  el.append(state,h,coverage,note);
+  if(stream.source){const a=document.createElement('a');a.href=stream.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent='原資料 ↗';el.append(a)}
+  root.append(el)
+ });
+ }catch(e){console.error('coverage',e);root.textContent='研究状況を読み込めませんでした。'}
+}
+loadEvidenceCoverage();
