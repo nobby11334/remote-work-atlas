@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse original 2025 e-Stat Excel annual age×sex net migration into JSON.
+"""Parse original e-Stat Excel annual age×sex net migration into JSON.
 
 Source: official annual migration table 3-3. No third-party data sources.
 Fails closed if source format or count changes; never publishes partial data.
@@ -75,7 +75,7 @@ def main():
   code=record.get("F","")
   name=record.get("G","")
   # 01000..47000: prefectures, excluding 00000 nationwide and cities.
-  if record.get("B")!="60000" or not re.fullmatch(r"(0[1-9]|[1-3][0-9]|4[0-7])000",code):
+  if record.get("B")!="60000" or record.get("E")!=str(YEAR)+"年" or not re.fullmatch(r"(0[1-9]|[1-3][0-9]|4[0-7])000",code):
    continue
   if name!=PREF_NAMES[int(code[:2])-1]:
    raise ValueError("Code/name mismatch: "+code+" "+name)
@@ -97,7 +97,7 @@ def main():
   if net!=0:raise ValueError("Prefecture net migration does not balance for "+key+": "+str(net))
  source_sha=hashlib.sha256(blob).hexdigest()
  output={
-  "dataset":"住民基本台帳人口移動報告・2025年年報 表3-3",
+  "dataset":f"住民基本台帳人口移動報告・{YEAR}年年報 表3-3",
   "year":YEAR,
   "population":"移動者（日本人・外国人の合計）",
   "unit":"人",
