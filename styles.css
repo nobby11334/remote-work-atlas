@@ -18,3 +18,20 @@
 .comparison-row strong{color:#315841;font-size:16px}
 @media(max-width:900px){.analysis-grid{grid-template-columns:1fr}.extra-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.extra-metrics{grid-template-columns:1fr 1fr}.extra-metric strong{font-size:25px}.analysis-section{padding-top:38px;padding-bottom:40px}.analysis-item{padding:18px}}
+
+
+/* Evidence-led management brief */
+.management-section .case a,.management-section .panel a{font-size:13px;font-weight:700;color:#376b49}
+.management-section .case{display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.management-section .case p{flex:1}
+.management-quote{margin:0 0 28px;padding:26px 30px;background:#f1f6ef;border-left:5px solid #527f60;border-radius:0 10px 10px 0}
+.management-quote strong{font-size:clamp(19px,2.5vw,28px);line-height:1.6}
+.management-quote p{margin-top:12px;margin-bottom:0;color:#5c6c5d}
+.management-split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.management-questions{padding-left:20px;margin:10px 0}
+.management-questions li{padding:9px 0;border-bottom:1px solid #e8eee7;font-size:14px;color:#485c4e}
+.management-conclusion{background:#193d2a;color:#f4f8f4;padding:30px;border-radius:12px;margin-top:24px}
+.management-conclusion h3{font-size:clamp(20px,2.4vw,27px);margin-top:12px}
+.management-conclusion p{color:#dce9dd}
+.management-conclusion .footnote{color:#bbcdbd}
+@media(max-width:850px){.management-split{grid-template-columns:1fr}}
