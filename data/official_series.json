@@ -1,30 +1,18 @@
 {
-  "series_name": "制度等に基づく雇用型テレワーカーの割合",
-  "unit": "percent",
-  "years": [
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-  ],
-  "values": [
-    7.7,
-    9,
-    10.8,
-    9.8,
-    19.7,
-    24.5,
-    22.7,
-    21.3,
-    20.9,
-    22.1
-  ],
-  "source": "https://www.mlit.go.jp/report/press/content/001989216.pdf",
-  "definition_note": "フルリモート採用率ではありません。"
+  "status": "superseded",
+  "deprecated_note": "過去の2016〜2025年系列は出典の指標定義の照合が済んでいないため廃止。誤用しないこと。表示用の唯一の正本は data/indicators.json。",
+  "replacement_file": "data/indicators.json",
+  "source": "https://www.mlit.go.jp/report/press/toshikankyoteleworkr7.html",
+  "verified_comparable_values": [
+    {
+      "metric": "直近1年間のテレワーク実施率",
+      "year": 2024,
+      "value": 15.6
+    },
+    {
+      "metric": "直近1年間のテレワーク実施率",
+      "year": 2025,
+      "value": 16.8
+    }
+  ]
 }
