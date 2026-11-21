@@ -1,0 +1,20 @@
+name: Validate atlas data
+on:
+  push:
+    paths:
+      - "data/**"
+      - "scripts/validate_data.py"
+      - ".github/workflows/validate-data.yml"
+  schedule:
+    - cron: "40 0 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify published datasets and missing-data labels
+        run: python3 scripts/validate_data.py
