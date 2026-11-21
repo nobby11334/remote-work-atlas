@@ -38,3 +38,11 @@
 - GitHubの Actions > Refresh published statistics > Run workflow から手動実行可能です。
 - 冒頭のメッセージはJavaScriptが出典付きJSONから自動生成し、外部AIサービスは必要ありません。
 - 学校卒業生の転居実績は未収集のため推計で穴埋めしません。
+
+## 都道府県別データ（2025年）
+- `data/prefectures_2025.json`: 47都道府県のテレワーク経験率と二次集計に掲載された回答者数。
+- 一次資料：総務省「令和7年通信利用動向調査」世帯構成員編・表35 https://www.e-stat.go.jp/stat-search/files?stat_infid=000040458853
+- 転記元：https://aipowerranking.jp/telework-experience-rate-by-prefecture/
+- 原統計表のCSVそのものを全件照合できなかったため、値の確定的な検証は未完了です。必ずこの制約を表示してください。
+- 指標は「企業等に勤務する人の過去1年のテレワーク経験率」であり、フルリモート求人・地元居住のまま全国就職した数・出社回帰による転居数とは異なります。
+- このデータの翌年分は現行の週次自動更新の対象外です。年次の新しい調査表を取得・照合した後に追加してください。
