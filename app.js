@@ -103,3 +103,39 @@ async function loadEvidenceCoverage(){
  }catch(e){console.error('coverage',e);root.textContent='研究状況を読み込めませんでした。'}
 }
 loadEvidenceCoverage();
+
+async function loadYouthMigration(){
+ const root=document.getElementById('youth-migration-chart');
+ const summary=document.getElementById('youth-migration-comment');
+ if(!root||!summary)return;
+ try{
+  const response=await fetch('data/youth_migration_gender.json',{cache:'no-store'});
+  if(!response.ok)throw new Error('HTTP '+response.status);
+  const d=await response.json();const Y=d.years, F=d.female,M=d.male;
+  if(Y.length!==F.length||Y.length!==M.length||!Y.length)throw Error('invalid migration series');
+  root.replaceChildren();
+  for(let i=0;i<Y.length;i++){
+   const row=document.createElement('div');row.className='youth-year';
+   const title=document.createElement('strong');title.textContent=Y[i]+'年';row.append(title);
+   for(const [label,v,type] of [['女性',F[i],'female'],['男性',M[i],'male']]){
+    const wrapper=document.createElement('div');wrapper.className='youth-bar-line';
+    const text=document.createElement('span');text.textContent=label;
+    const track=document.createElement('div');track.className='youth-track';
+    const fill=document.createElement('span');fill.className='youth-fill '+type;fill.style.width=(v/1.6*100).toFixed(2)+'%';track.append(fill);
+    const value=document.createElement('b');value.textContent=v.toFixed(2)+'%';
+    wrapper.append(text,track,value);row.append(wrapper);
+   }root.append(row);
+  }
+  const a=F.at(-1)-M.at(-1),f=F.at(-1)-F.at(-2),m=M.at(-1)-M.at(-2);
+  summary.textContent=Y.at(-1)+'年の転出超過割合は女性'+F.at(-1).toFixed(2)+'％、男性'+M.at(-1).toFixed(2)+'％で、男女差は'+a.toFixed(2)+'ポイント。前年から女性は'+(f>=0?'+':'')+f.toFixed(2)+'ポイント、男性は'+(m>=0?'+':'')+m.toFixed(2)+'ポイントです。地域の人口移動とリモートワーク制度の因果関係を示すデータではありません。';
+  const rootAnalysis=document.getElementById('analysis-messages');
+  if(rootAnalysis){
+   const card=document.createElement('article');card.className='analysis-item';
+   const badge=document.createElement('span');badge.className='overline';badge.textContent='若年人口の移動 / 公的統計';
+   const h=document.createElement('h3');h.textContent='地方部の若年女性の転出超過割合は'+F.at(-1).toFixed(2)+'％';
+   const p=document.createElement('p');p.textContent='内閣府白書による'+Y.at(-1)+'年の10〜20代の転出超過割合。男性'+M.at(-1).toFixed(2)+'％を'+a.toFixed(2)+'ポイント上回ります。人口移動の背景に勤務制度がどの程度関与したかは未解明です。';
+   card.append(badge,h,p);rootAnalysis.append(card);
+  }
+ }catch(e){console.error('Youth data',e);summary.textContent='人口移動データを読み込めませんでした。';}
+}
+loadYouthMigration();
