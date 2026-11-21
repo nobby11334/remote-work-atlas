@@ -48,14 +48,14 @@
     },
     {
       "id": "pref_age_sex_migration",
-      "name": "47都道府県・男女別・5歳階級の人口移動",
+      "name": "47都道府県・20代男女・5歳階級の転入超過数",
       "scope": "都道府県・男女・5歳階級",
-      "unit": "転入超過数（人）",
-      "coverage": "2025年年報の原表は公開済み。全県の集計済みJSONは未取得",
-      "status": "awaiting_raw_data_validation",
-      "source": "https://www.e-stat.go.jp/stat-search/files?layout=datalist&lid=000001476215&page=1",
-      "limitation": "e-Stat年報表3-3は存在するが、原Excel抽出・年齢区分等の検証が未完了。数値を推測で掲載しない",
-      "update": "年報表3-3取得・検証タスクで追跡"
+      "unit": "県間の転入超過人数（人）、負値は転出超過",
+      "coverage": "2024年・2025年の47都道府県全件",
+      "status": "published",
+      "source": "https://www.e-stat.go.jp/stat-search/files?layout=dataset&stat_infid=000040407042&toukei=00200523",
+      "limitation": "移動原因は記録されていない。出社回帰・出生率への影響は推定できない。",
+      "update": "総務省の原Excelを毎月再取得し、元ファイルが改訂された場合だけ再計算。次年度版は公表監視し定義検証後に追加"
     },
     {
       "id": "school_employment",
