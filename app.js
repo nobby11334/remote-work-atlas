@@ -139,3 +139,62 @@ async function loadYouthMigration(){
  }catch(e){console.error('Youth data',e);summary.textContent='人口移動データを読み込めませんでした。';}
 }
 loadYouthMigration();
+
+async function loadPrefectureMigration(){
+ const target=document.getElementById('migration-chart'),note=document.getElementById('migration-analysis');
+ if(!target||!note)return;
+ const yearSel=document.getElementById('migration-year'),sexSel=document.getElementById('migration-sex'),ageSel=document.getElementById('migration-age'),kpis=document.getElementById('migration-stats');
+ try{
+  const results=await Promise.all([2024,2025].map(async year=>{
+   const r=await fetch('data/prefecture_youth_migration_'+year+'.json',{cache:'no-store'});
+   if(!r.ok)throw Error('HTTP '+r.status+' for '+year);
+   const d=await r.json();if(d.prefectures.length!==47||d.year!==year||!d.verified.startsWith('official_xlsx'))throw Error('Unverified dataset '+year);
+   return [year,d];
+  }));
+  const data=Object.fromEntries(results),map24=Object.fromEntries(data[2024].prefectures.map(x=>[x.code,x]));
+  function signed(x){return x>0?'+'+x.toLocaleString('ja-JP'):x.toLocaleString('ja-JP')}
+  function render(){
+   const year=Number(yearSel.value),sex=sexSel.value,age=ageSel.value,key=sex+'_'+age;
+   const sorted=[...data[year].prefectures].sort((a,b)=>b[key]-a[key]),max=Math.max(...sorted.map(p=>Math.abs(p[key])),1);
+   const plus=sorted.filter(x=>x[key]>0),minus=sorted.filter(x=>x[key]<0);
+   const biggest=sorted[0],smallest=sorted.at(-1);
+   const movement=biggest[key];
+   note.textContent=year+'年の'+(sex==='female'?'女性':'男性')+'・'+(age==='20s'?'20～29歳':age==='20_24'?'20～24歳':'25～29歳')+'の転入超過は、'+biggest.prefecture+'（'+signed(movement)+'人）が最大。転出超過は'+smallest.prefecture+'（'+signed(smallest[key])+'人）が最大です。転入超過の都道府県は'+plus.length+'、転出超過は'+minus.length+'。出社回帰が移動原因であることを示すものではありません。';
+   kpis.replaceChildren();
+   for(const [label,value] of [['転入超過の県',plus.length+'県'],['転出超過の県',minus.length+'県'],['最大の転入超過',biggest.prefecture+' '+signed(biggest[key])+'人'],['最大の転出超過',smallest.prefecture+' '+signed(smallest[key])+'人']]){
+    const cell=document.createElement('div');cell.className='migration-kpi';
+    const heading=document.createElement('span');heading.textContent=label;
+    const b=document.createElement('b');b.textContent=value;cell.append(heading,b);kpis.append(cell);
+   }
+   target.replaceChildren();
+   sorted.forEach(p=>{
+    const row=document.createElement('div');row.className='migration-pref-row';
+    const label=document.createElement('span');label.textContent=p.prefecture;
+    const left=document.createElement('div');left.className='migration-neg';
+    const right=document.createElement('div');right.className='migration-pos';
+    const fill=document.createElement('span');fill.className='migration-fill';
+    fill.style.width=(Math.abs(p[key])/max*100).toFixed(2)+'%';
+    if(p[key]<0)left.append(fill);else right.append(fill);
+    const val=document.createElement('b');val.textContent=signed(p[key]);
+    if(year===2025){
+     const d=p[key]-map24[p.code][key];const diff=document.createElement('small');
+     diff.textContent='前年差 '+signed(d);
+     val.append(diff);
+    }
+    row.append(label,left,right,val);target.append(row);
+   });
+  }
+  yearSel.addEventListener('change',render);sexSel.addEventListener('change',render);ageSel.addEventListener('change',render);render();
+  const top=document.getElementById('analysis-messages');
+  if(top){
+   const tok=data[2025].prefectures.find(x=>x.prefecture==='東京都');
+   const prev=map24[tok.code].female_20s,delta=tok.female_20s-prev;
+   const card=document.createElement('article');card.className='analysis-item';
+   const heading=document.createElement('span');heading.className='overline';heading.textContent='都道府県間人口移動 / 2025年・総務省';
+   const h=document.createElement('h3');h.textContent='東京都の20代女性は'+signed(tok.female_20s)+'人の転入超過';
+   const p=document.createElement('p');p.textContent='2024年は'+signed(prev)+'人、2025年は'+signed(tok.female_20s)+'人で、前年差'+signed(delta)+'人。20～24歳と25～29歳を合算した都道府県間の人口移動です。テレワーク制度の影響を直接示してはいません。';
+   card.append(heading,h,p);top.append(card);
+  }
+ }catch(err){console.error('migration datasets',err);note.textContent='人口移動の原統計を読み込めませんでした。';}
+}
+loadPrefectureMigration();
