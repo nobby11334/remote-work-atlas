@@ -1,0 +1,31 @@
+name: Refresh published statistics
+on:
+  schedule:
+    - cron: "20 1 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: atlas-data-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Check vetted source pages and update revised figures
+        run: python3 scripts/update_data.py
+      - name: Commit validated changes only
+        run: |
+          if ! git diff --quiet -- data/indicators.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/indicators.json
+            git commit -m "data: refresh verified published statistics"
+            git push
+          else
+            echo "No reviewed statistics changed; no commit required."
+          fi
