@@ -1,0 +1,46 @@
+name: Refresh youth migration data
+on:
+  schedule:
+    - cron: "35 2 5 * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/update_youth_migration.py"
+      - ".github/workflows/update-youth-migration.yml"
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: youth-migration-refresh
+  cancel-in-progress: false
+jobs:
+  verify-and-refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check official White Papers and recompute only anchored corrections
+        id: check
+        run: python3 scripts/update_youth_migration.py
+      - name: Validate data
+        run: python3 scripts/validate_data.py
+      - name: Commit reviewed same-edition corrections
+        run: |
+          if ! git diff --quiet -- data/youth_migration_gender.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/youth_migration_gender.json
+            git commit -m "data: update official youth gender migration figures"
+            git push
+          else
+            echo "No confirmed revisions"
+          fi
+      - name: Create human-review issue for newer edition
+        if: steps.check.outputs.new_report == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing=$(gh issue list --state all --search "2026年 若年男女の転出超過率 新年度確認 in:title" --json number --jq 'length')
+          if [ "$existing" = "0" ]; then
+            gh issue create --title "2026年 若年男女の転出超過率 新年度確認" --body-file /tmp/migration-report-issue.md
+          fi
