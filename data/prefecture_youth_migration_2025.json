@@ -1,0 +1,485 @@
+{
+  "dataset": "住民基本台帳人口移動報告・2025年年報 表3-3",
+  "year": 2025,
+  "population": "移動者（日本人・外国人の合計）",
+  "unit": "人",
+  "meaning": "転入超過数＝他都道府県からの転入者数－他都道府県への転出者数。負数は転出超過。20代は20〜24歳と25〜29歳を合算。",
+  "source_url": "https://www.e-stat.go.jp/stat-search/files?layout=dataset&stat_infid=000040407042&toukei=00200523",
+  "excel_download_url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040407042&fileKind=0",
+  "source_sha256": "382589241b4809d4d69dee2091b96c9f5062c9a9967013a0a5c94ccf79b157cd",
+  "verified": "official_xlsx_auto_parsed_with_47_prefecture_and_zero_sum_checks",
+  "extracted_at": "2026-11-21",
+  "limits": "出生率、婚姻、リモートワークの利用状況、勤務先の所在地、転居の理由は含まれない。県間移動の転入超過の集計である。",
+  "prefectures": [
+    {
+      "code": "01000",
+      "prefecture": "北海道",
+      "male_20_24": -1543,
+      "male_25_29": -1073,
+      "female_20_24": -2306,
+      "female_25_29": -1278,
+      "male_20s": -2616,
+      "female_20s": -3584
+    },
+    {
+      "code": "02000",
+      "prefecture": "青森県",
+      "male_20_24": -1055,
+      "male_25_29": -221,
+      "female_20_24": -1478,
+      "female_25_29": -155,
+      "male_20s": -1276,
+      "female_20s": -1633
+    },
+    {
+      "code": "03000",
+      "prefecture": "岩手県",
+      "male_20_24": -786,
+      "male_25_29": -250,
+      "female_20_24": -1360,
+      "female_25_29": -307,
+      "male_20s": -1036,
+      "female_20s": -1667
+    },
+    {
+      "code": "04000",
+      "prefecture": "宮城県",
+      "male_20_24": -635,
+      "male_25_29": -707,
+      "female_20_24": -672,
+      "female_25_29": -455,
+      "male_20s": -1342,
+      "female_20s": -1127
+    },
+    {
+      "code": "05000",
+      "prefecture": "秋田県",
+      "male_20_24": -722,
+      "male_25_29": -236,
+      "female_20_24": -948,
+      "female_25_29": -213,
+      "male_20s": -958,
+      "female_20s": -1161
+    },
+    {
+      "code": "06000",
+      "prefecture": "山形県",
+      "male_20_24": -1082,
+      "male_25_29": -359,
+      "female_20_24": -1233,
+      "female_25_29": -198,
+      "male_20s": -1441,
+      "female_20s": -1431
+    },
+    {
+      "code": "07000",
+      "prefecture": "福島県",
+      "male_20_24": -1508,
+      "male_25_29": -570,
+      "female_20_24": -1906,
+      "female_25_29": -536,
+      "male_20s": -2078,
+      "female_20s": -2442
+    },
+    {
+      "code": "08000",
+      "prefecture": "茨城県",
+      "male_20_24": -2424,
+      "male_25_29": -1226,
+      "female_20_24": -2485,
+      "female_25_29": -656,
+      "male_20s": -3650,
+      "female_20s": -3141
+    },
+    {
+      "code": "09000",
+      "prefecture": "栃木県",
+      "male_20_24": -344,
+      "male_25_29": -303,
+      "female_20_24": -1180,
+      "female_25_29": -231,
+      "male_20s": -647,
+      "female_20s": -1411
+    },
+    {
+      "code": "10000",
+      "prefecture": "群馬県",
+      "male_20_24": -1286,
+      "male_25_29": -582,
+      "female_20_24": -1643,
+      "female_25_29": -305,
+      "male_20s": -1868,
+      "female_20s": -1948
+    },
+    {
+      "code": "11000",
+      "prefecture": "埼玉県",
+      "male_20_24": 2879,
+      "male_25_29": 2356,
+      "female_20_24": 3493,
+      "female_25_29": 1034,
+      "male_20s": 5235,
+      "female_20s": 4527
+    },
+    {
+      "code": "12000",
+      "prefecture": "千葉県",
+      "male_20_24": -1772,
+      "male_25_29": -425,
+      "female_20_24": 2579,
+      "female_25_29": -339,
+      "male_20s": -2197,
+      "female_20s": 2240
+    },
+    {
+      "code": "13000",
+      "prefecture": "東京都",
+      "male_20_24": 27278,
+      "male_25_29": 10122,
+      "female_20_24": 29985,
+      "female_25_29": 10520,
+      "male_20s": 37400,
+      "female_20s": 40505
+    },
+    {
+      "code": "14000",
+      "prefecture": "神奈川県",
+      "male_20_24": 9549,
+      "male_25_29": 3344,
+      "female_20_24": 7814,
+      "female_25_29": 2490,
+      "male_20s": 12893,
+      "female_20s": 10304
+    },
+    {
+      "code": "15000",
+      "prefecture": "新潟県",
+      "male_20_24": -1486,
+      "male_25_29": -482,
+      "female_20_24": -2276,
+      "female_25_29": -533,
+      "male_20s": -1968,
+      "female_20s": -2809
+    },
+    {
+      "code": "16000",
+      "prefecture": "富山県",
+      "male_20_24": -475,
+      "male_25_29": -417,
+      "female_20_24": -794,
+      "female_25_29": -251,
+      "male_20s": -892,
+      "female_20s": -1045
+    },
+    {
+      "code": "17000",
+      "prefecture": "石川県",
+      "male_20_24": -972,
+      "male_25_29": -192,
+      "female_20_24": -1009,
+      "female_25_29": -385,
+      "male_20s": -1164,
+      "female_20s": -1394
+    },
+    {
+      "code": "18000",
+      "prefecture": "福井県",
+      "male_20_24": -646,
+      "male_25_29": -361,
+      "female_20_24": -933,
+      "female_25_29": -325,
+      "male_20s": -1007,
+      "female_20s": -1258
+    },
+    {
+      "code": "19000",
+      "prefecture": "山梨県",
+      "male_20_24": -699,
+      "male_25_29": -73,
+      "female_20_24": -1016,
+      "female_25_29": -166,
+      "male_20s": -772,
+      "female_20s": -1182
+    },
+    {
+      "code": "20000",
+      "prefecture": "長野県",
+      "male_20_24": -1113,
+      "male_25_29": -408,
+      "female_20_24": -1682,
+      "female_25_29": -236,
+      "male_20s": -1521,
+      "female_20s": -1918
+    },
+    {
+      "code": "21000",
+      "prefecture": "岐阜県",
+      "male_20_24": -1208,
+      "male_25_29": -428,
+      "female_20_24": -1711,
+      "female_25_29": -927,
+      "male_20s": -1636,
+      "female_20s": -2638
+    },
+    {
+      "code": "22000",
+      "prefecture": "静岡県",
+      "male_20_24": -825,
+      "male_25_29": -772,
+      "female_20_24": -1715,
+      "female_25_29": -664,
+      "male_20s": -1597,
+      "female_20s": -2379
+    },
+    {
+      "code": "23000",
+      "prefecture": "愛知県",
+      "male_20_24": 1021,
+      "male_25_29": 97,
+      "female_20_24": 551,
+      "female_25_29": 498,
+      "male_20s": 1118,
+      "female_20s": 1049
+    },
+    {
+      "code": "24000",
+      "prefecture": "三重県",
+      "male_20_24": -983,
+      "male_25_29": -716,
+      "female_20_24": -1371,
+      "female_25_29": -595,
+      "male_20s": -1699,
+      "female_20s": -1966
+    },
+    {
+      "code": "25000",
+      "prefecture": "滋賀県",
+      "male_20_24": -496,
+      "male_25_29": -8,
+      "female_20_24": -803,
+      "female_25_29": 109,
+      "male_20s": -504,
+      "female_20s": -694
+    },
+    {
+      "code": "26000",
+      "prefecture": "京都府",
+      "male_20_24": -1207,
+      "male_25_29": -1226,
+      "female_20_24": -565,
+      "female_25_29": -1109,
+      "male_20s": -2433,
+      "female_20s": -1674
+    },
+    {
+      "code": "27000",
+      "prefecture": "大阪府",
+      "male_20_24": 2195,
+      "male_25_29": 1615,
+      "female_20_24": 6372,
+      "female_25_29": 2410,
+      "male_20s": 3810,
+      "female_20s": 8782
+    },
+    {
+      "code": "28000",
+      "prefecture": "兵庫県",
+      "male_20_24": -2833,
+      "male_25_29": -300,
+      "female_20_24": -2125,
+      "female_25_29": -445,
+      "male_20s": -3133,
+      "female_20s": -2570
+    },
+    {
+      "code": "29000",
+      "prefecture": "奈良県",
+      "male_20_24": -1269,
+      "male_25_29": -554,
+      "female_20_24": -1003,
+      "female_25_29": -641,
+      "male_20s": -1823,
+      "female_20s": -1644
+    },
+    {
+      "code": "30000",
+      "prefecture": "和歌山県",
+      "male_20_24": -667,
+      "male_25_29": -342,
+      "female_20_24": -895,
+      "female_25_29": -349,
+      "male_20s": -1009,
+      "female_20s": -1244
+    },
+    {
+      "code": "31000",
+      "prefecture": "鳥取県",
+      "male_20_24": -547,
+      "male_25_29": -136,
+      "female_20_24": -619,
+      "female_25_29": -155,
+      "male_20s": -683,
+      "female_20s": -774
+    },
+    {
+      "code": "32000",
+      "prefecture": "島根県",
+      "male_20_24": -466,
+      "male_25_29": -153,
+      "female_20_24": -465,
+      "female_25_29": -36,
+      "male_20s": -619,
+      "female_20s": -501
+    },
+    {
+      "code": "33000",
+      "prefecture": "岡山県",
+      "male_20_24": -1306,
+      "male_25_29": -636,
+      "female_20_24": -1604,
+      "female_25_29": -807,
+      "male_20s": -1942,
+      "female_20s": -2411
+    },
+    {
+      "code": "34000",
+      "prefecture": "広島県",
+      "male_20_24": -1958,
+      "male_25_29": -1028,
+      "female_20_24": -2336,
+      "female_25_29": -665,
+      "male_20s": -2986,
+      "female_20s": -3001
+    },
+    {
+      "code": "35000",
+      "prefecture": "山口県",
+      "male_20_24": -1109,
+      "male_25_29": -528,
+      "female_20_24": -1521,
+      "female_25_29": -541,
+      "male_20s": -1637,
+      "female_20s": -2062
+    },
+    {
+      "code": "36000",
+      "prefecture": "徳島県",
+      "male_20_24": -618,
+      "male_25_29": -218,
+      "female_20_24": -791,
+      "female_25_29": -238,
+      "male_20s": -836,
+      "female_20s": -1029
+    },
+    {
+      "code": "37000",
+      "prefecture": "香川県",
+      "male_20_24": -723,
+      "male_25_29": -246,
+      "female_20_24": -818,
+      "female_25_29": -172,
+      "male_20s": -969,
+      "female_20s": -990
+    },
+    {
+      "code": "38000",
+      "prefecture": "愛媛県",
+      "male_20_24": -1026,
+      "male_25_29": -564,
+      "female_20_24": -1504,
+      "female_25_29": -596,
+      "male_20s": -1590,
+      "female_20s": -2100
+    },
+    {
+      "code": "39000",
+      "prefecture": "高知県",
+      "male_20_24": -653,
+      "male_25_29": -228,
+      "female_20_24": -666,
+      "female_25_29": -191,
+      "male_20s": -881,
+      "female_20s": -857
+    },
+    {
+      "code": "40000",
+      "prefecture": "福岡県",
+      "male_20_24": -1512,
+      "male_25_29": -445,
+      "female_20_24": -182,
+      "female_25_29": -463,
+      "male_20s": -1957,
+      "female_20s": -645
+    },
+    {
+      "code": "41000",
+      "prefecture": "佐賀県",
+      "male_20_24": -504,
+      "male_25_29": -99,
+      "female_20_24": -670,
+      "female_25_29": -262,
+      "male_20s": -603,
+      "female_20s": -932
+    },
+    {
+      "code": "42000",
+      "prefecture": "長崎県",
+      "male_20_24": -908,
+      "male_25_29": -413,
+      "female_20_24": -1277,
+      "female_25_29": -445,
+      "male_20s": -1321,
+      "female_20s": -1722
+    },
+    {
+      "code": "43000",
+      "prefecture": "熊本県",
+      "male_20_24": -654,
+      "male_25_29": -332,
+      "female_20_24": -1021,
+      "female_25_29": -327,
+      "male_20s": -986,
+      "female_20s": -1348
+    },
+    {
+      "code": "44000",
+      "prefecture": "大分県",
+      "male_20_24": -846,
+      "male_25_29": -88,
+      "female_20_24": -1228,
+      "female_25_29": -370,
+      "male_20s": -934,
+      "female_20s": -1598
+    },
+    {
+      "code": "45000",
+      "prefecture": "宮崎県",
+      "male_20_24": -592,
+      "male_25_29": -271,
+      "female_20_24": -1001,
+      "female_25_29": -202,
+      "male_20s": -863,
+      "female_20s": -1203
+    },
+    {
+      "code": "46000",
+      "prefecture": "鹿児島県",
+      "male_20_24": -709,
+      "male_25_29": -186,
+      "female_20_24": -1281,
+      "female_25_29": -501,
+      "male_20s": -895,
+      "female_20s": -1782
+    },
+    {
+      "code": "47000",
+      "prefecture": "沖縄県",
+      "male_20_24": -755,
+      "male_25_29": 268,
+      "female_20_24": -701,
+      "female_25_29": 209,
+      "male_20s": -487,
+      "female_20s": -492
+    }
+  ]
+}
