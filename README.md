@@ -11,14 +11,17 @@
 ## 構成
 - `index.html` — 本文・出典リンク・調査項目
 - `styles.css` — レスポンシブデザイン
-- `app.js` — 2016–2025年の国交省データ可視化、47都道府県選択
+- `app.js` — データから自然言語の分析と比較グラフを生成、47都道府県選択
 - `assets/` — 柴犬総研ロゴ
-- `data/` — データの記録と今後の入力用テンプレート
+- `data/indicators.json` — 出典付き検証済み統計の正本
+- `data/school_survey_template.csv` — 学校調査テンプレート
+- `scripts/update_data.py` — 公式出典の数値差分を安全に検査
+- `.github/workflows/refresh-data.yml` — 毎週月曜10:20 JSTに検査
 
 ## 指標・出典
 - パーソル総合研究所 2026年調査: https://rc.persol-group.co.jp/thinktank/data/telework-survey2026/
 - 国土交通省 令和7年度調査: https://www.mlit.go.jp/report/press/toshikankyoteleworkr7.html
-- 国交省「制度等に基づく雇用型テレワーカー割合」年次推移（2016–2025）: https://www.mlit.go.jp/report/press/content/001989216.pdf
+- 2016〜2025年の旧系列は出典定義の照合が不十分だったため廃止。現在の表示は `data/indicators.json` のみ。
 
 **重要:** 民間調査の「正社員の実施率」と国交省の「直近1年間の実施率」「制度等に基づく雇用型テレワーカー割合」は異なる定義。比較した単一の時系列を作らないこと。またこれらはフルリモート採用率ではない。
 
@@ -27,3 +30,11 @@
 
 ## ブランド素材
 `assets/shibainu-soken-logo.svg` と `assets/shibainu-symbol.svg` は公開時の暫定ベクター版です。会話上で承認されたラスターロゴそのものではなく、ブランドを近似した素材です。承認済みロゴへの差し替えが必要です。
+## 自動更新の運用
+- 毎週月曜10:20 JSTにGitHub Actionsが出典ページをチェックし、同一年度版の数値修正を安全に特定できたときだけデータをコミットします。
+- 出典の構造変更やアクセス失敗時は数値を上書きしません。エラーは実行ログに残します。
+- 新年度の報告は設問・母集団を確認してから取り込みます。異なる調査定義の系列を自動結合しません。
+- 更新がない場合は更新日も変更しません。
+- GitHubの Actions > Refresh published statistics > Run workflow から手動実行可能です。
+- 冒頭のメッセージはJavaScriptが出典付きJSONから自動生成し、外部AIサービスは必要ありません。
+- 学校卒業生の転居実績は未収集のため推計で穴埋めしません。
