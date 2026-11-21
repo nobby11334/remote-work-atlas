@@ -18,6 +18,8 @@ async function loadPrefectures(){
     const data=await response.json();
     if(data.prefectures.length!==47)throw Error('incomplete data');
     const list=data.prefectures;
+    let migration2025=null;
+    try{const mr=await fetch("data/prefecture_youth_migration_2025.json",{cache:"no-store"});if(mr.ok){const md=await mr.json();if(md.prefectures.length===47)migration2025=Object.fromEntries(md.prefectures.map(p=>[p.prefecture,p]));}}catch(error){console.warn("Migration layer unavailable",error)}
     function show(){
       const name=select.value;
       result.replaceChildren();
@@ -27,7 +29,14 @@ async function loadPrefectures(){
       const h=document.createElement('h4');h.textContent=target?name+'：テレワーク経験率 '+target.rate+'%':'47都道府県のテレワーク経験率を収録';
       const desc=document.createElement('p');desc.textContent=target?'2025年調査。企業等に勤務する人の過去1年の経験率。掲載表の回答者数：'+target.respondents+'人。全国値26.9%との差 '+(target.rate-data.national>=0?'+':'')+(target.rate-data.national).toFixed(1)+'ポイント。':'地域を選ぶと実績値を確認できます。学校卒業生のフルリモート就職数・出社回帰による転居数は、まだ収集できていません。';
       const caveat=document.createElement('p');caveat.className='pref-disclaimer';caveat.textContent='※出典：総務省2025年通信利用動向調査・表35の二次集計。原CSVとの全件突合は未実施。フルリモート求人率ではありません。';
-      result.append(num,h,desc,caveat);
+      result.append(num,h,desc);
+      if(target&&migration2025&&migration2025[name]){
+        const m=migration2025[name],line=document.createElement("p");line.className="pref-migration-summary";
+        const signed=v=>(v>0?"+":"")+v.toLocaleString("ja-JP");
+        line.textContent="同じ2025年の20代人口移動：女性 "+signed(m.female_20s)+"人、男性 "+signed(m.male_20s)+"人（転入超過数）。ここでの数値は国の人口移動原統計に基づきます。";
+        result.append(line);
+      }
+      result.append(caveat);
     }
     select.addEventListener('change',show);show();
     if(board){
