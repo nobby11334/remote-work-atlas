@@ -49,3 +49,17 @@
 .no-data-icon.pref-number{border-radius:12px;width:auto;padding:0 14px;font-size:24px;min-width:96px}
 .analysis-item a{font-size:12px;font-weight:700;color:#3d7050}
 @media(max-width:700px){.pref-ranking{grid-template-columns:1fr}.pref-ranking-row{grid-template-columns:93px 1fr 54px;font-size:12px}}
+
+
+/* 2019–2024 urban/rural enterprise adoption */
+.trend-legend{display:flex;gap:26px;margin:5px 0 18px;font-size:13px;font-weight:700}
+.legend-item:before{content:'';display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:8px;vertical-align:middle}
+.legend-item.urban:before{background:#3d7157}.legend-item.rural:before{background:#b88a50}
+.regional-series{display:grid;gap:12px;margin:8px 0 28px}
+.regional-series-row{display:grid;grid-template-columns:60px 1fr 1fr;gap:16px;align-items:center}
+.regional-series-row>strong{font-size:13px}
+.regional-series-track{height:34px;position:relative;background:#f0f3ee;border-radius:5px;overflow:hidden}
+.regional-series-fill{display:block;height:100%}
+.regional-series-fill.urban{background:#3d7157}.regional-series-fill.rural{background:#b88a50}
+.regional-series-val{position:absolute;left:8px;top:4px;font-weight:700;color:#192e22;font-size:14px;background:#ffffffc9;border-radius:3px;padding:1px 5px}
+@media(max-width:620px){.regional-series-row{grid-template-columns:40px 1fr 1fr;gap:6px}.regional-series-row>strong{font-size:11px}.regional-series-val{font-size:11px;left:3px}}
