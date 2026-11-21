@@ -56,3 +56,30 @@ async function loadPrefectures(){
   }catch(e){console.error('Prefecture data load failed',e);result.textContent='都道府県別データを読み込めませんでした。';}
 }
 loadPrefectures();
+
+async function loadRegionalCompanyTrend(){
+ const root=document.getElementById('regional-trend-chart'), insight=document.getElementById('regional-trend-analysis');if(!root||!insight)return;
+ try{
+ const response=await fetch('data/company_adoption_regions_2019_2024.json',{cache:'no-store'});
+ if(!response.ok)throw Error('HTTP '+response.status);
+ const d=await response.json(),Y=d.survey_years,G=d.groups;
+ for(const key of ['全国','都市部','地方部'])if(!Array.isArray(G[key])||G[key].length!==Y.length)throw Error('invalid series '+key);
+ root.replaceChildren();const legend=document.createElement('div');legend.className='trend-legend';
+ const graph=document.createElement('div');graph.className='regional-series';
+ for(let i=0;i<Y.length;i++){
+  const row=document.createElement('div');row.className='regional-series-row';const yr=document.createElement('strong');yr.textContent=Y[i]+'年';row.append(yr);
+  for(const k of ['都市部','地方部']){
+   const bar=document.createElement('div');bar.className='regional-series-track';
+   const fill=document.createElement('span');fill.className='regional-series-fill '+(k==='都市部'?'urban':'rural');fill.style.width=(G[k][i]/70*100).toFixed(1)+'%';fill.title=k+' '+G[k][i]+'%';
+   const val=document.createElement('span');val.className='regional-series-val';val.textContent=G[k][i].toFixed(1)+'%';
+   bar.append(fill,val);row.append(bar);
+  }graph.append(row);
+ }
+ for(const [k,cls] of [['都市部','urban'],['地方部','rural']]){const item=document.createElement('span');item.className='legend-item '+cls;item.textContent=k;legend.append(item)}
+ root.append(legend,graph);
+ const start=G['都市部'][0]-G['地方部'][0],end=G['都市部'].at(-1)-G['地方部'].at(-1);
+ const peakCity=Math.max(...G['都市部']),peakRural=Math.max(...G['地方部']);
+ insight.textContent='2019年の企業導入率は都市部'+G['都市部'][0]+'％・地方部'+G['地方部'][0]+'％、差'+start.toFixed(1)+'ポイント。2024年は都市部'+G['都市部'].at(-1)+'％・地方部'+G['地方部'].at(-1)+'％、差'+end.toFixed(1)+'ポイント。2019年より両地域で導入率は上昇しましたが、2021年の都市部'+peakCity+'％と2022年の地方部'+peakRural+'％のピークからは下がっています。企業の導入状況に関する結果であり、地方在住の新卒者が全国就職できる割合を示していません。';
+ }catch(e){console.error('regional trend',e);insight.textContent='企業導入率のデータを取得できませんでした。';}
+}
+loadRegionalCompanyTrend();
