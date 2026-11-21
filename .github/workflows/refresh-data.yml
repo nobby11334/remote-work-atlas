@@ -1,5 +1,9 @@
 name: Refresh published statistics
 on:
+  push:
+    paths:
+      - ".github/workflows/refresh-data.yml"
+      - "scripts/update_data.py"
   schedule:
     - cron: "20 1 * * 1"
   workflow_dispatch:
