@@ -1,0 +1,32 @@
+name: Monitor annual prefecture telework survey
+on:
+  schedule:
+    - cron: "15 2 1 * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/watch-prefecture-data.yml"
+      - "scripts/watch_prefecture_release.py"
+permissions:
+  contents: read
+  issues: write
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect the next annual e-Stat prefecture table
+        id: detect
+        run: python3 scripts/watch_prefecture_release.py
+      - name: Create a review issue only when a new dataset is detected
+        if: steps.detect.outputs.found == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing=$(gh issue list --state all --search "2026年通信利用動向調査 表35 in:title" --json number --jq 'length')
+          if [ "$existing" = "0" ]; then
+            gh issue create --title "2026年通信利用動向調査 表35：新年度の47都道府県データを検証" --body-file /tmp/remote-work-atlas-new-source.txt
+          else
+            echo "Issue already exists"
+          fi
