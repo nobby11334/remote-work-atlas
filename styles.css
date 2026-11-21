@@ -96,3 +96,16 @@
 .workforce-conclusion a{color:#b1e0bd}
 @media(max-width:800px){.workforce-stats,.workforce-two{grid-template-columns:1fr}}
 @media(max-width:620px){.workforce-stats strong{font-size:46px}.workforce-quote,.workforce-conclusion{padding:20px}}
+
+
+/* Cabinet Office youth migration series */
+.youth-trend-panel{margin:0 0 23px}
+.youth-migration-chart{display:grid;gap:21px;margin:23px 0 30px}
+.youth-year{display:grid;grid-template-columns:76px 1fr 1fr;align-items:center;gap:16px}
+.youth-year>strong{font-size:16px}
+.youth-bar-line{display:grid;grid-template-columns:28px 1fr 60px;align-items:center;gap:8px;font-size:13px}
+.youth-bar-line b{text-align:right;font-size:14px}
+.youth-track{height:22px;background:#edf3ed;overflow:hidden;border-radius:5px}
+.youth-fill{display:block;height:100%;border-radius:4px}
+.youth-fill.female{background:#ad668a}.youth-fill.male{background:#6089a2}
+@media(max-width:800px){.youth-year{grid-template-columns:48px 1fr;gap:9px}.youth-bar-line{grid-column:2}.youth-year>strong{grid-row:1 / span 2}}
