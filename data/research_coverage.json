@@ -36,6 +36,28 @@
       "update": "出典の新調査監視"
     },
     {
+      "id": "youth_gender_outmigration",
+      "name": "地域における10〜20代の男女別転出超過割合",
+      "scope": "内閣府白書の地域集計・男女別",
+      "unit": "転出超過数／対象人口（%）",
+      "coverage": "2024年・2025年",
+      "status": "published",
+      "source": "https://www.gender.go.jp/about_danjo/whitepaper/r08/zentai/html/honpen/b1_s03_00.html",
+      "limitation": "男女共同参画白書の地域集計。個別都道府県の20代女性の転出超過人数ではなく、リモートワークの因果効果を示さない",
+      "update": "同一年度版の記載変更は月次再照合。新年度は検知して人手検証後に追加"
+    },
+    {
+      "id": "pref_age_sex_migration",
+      "name": "47都道府県・男女別・5歳階級の人口移動",
+      "scope": "都道府県・男女・5歳階級",
+      "unit": "転入超過数（人）",
+      "coverage": "2025年年報の原表は公開済み。全県の集計済みJSONは未取得",
+      "status": "awaiting_raw_data_validation",
+      "source": "https://www.e-stat.go.jp/stat-search/files?layout=datalist&lid=000001476215&page=1",
+      "limitation": "e-Stat年報表3-3は存在するが、原Excel抽出・年齢区分等の検証が未完了。数値を推測で掲載しない",
+      "update": "年報表3-3取得・検証タスクで追跡"
+    },
+    {
       "id": "school_employment",
       "name": "地方学校からの居住地非制限求人への就職",
       "scope": "高校・専門学校・高専・大学",
