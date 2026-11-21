@@ -26,5 +26,11 @@ def check():
  assert all(x["status"] in {"published","secondary_transcribed","awaiting_raw_data_validation","not_collected"} for x in c["streams"])
  for name in ["school_employment","relocation","job_posts"]:
   assert next(x for x in c["streams"] if x["id"]==name)["status"]=="not_collected"
+ migration=load("data/youth_migration_gender.json")
+ assert migration["years"]==[2024,2025]
+ assert len(migration["female"])==len(migration["male"])==len(migration["years"])
+ assert all(0<=v<=5 for k in ("female","male") for v in migration[k])
+ assert migration["source"].startswith("https://www.gender.go.jp/")
+ assert migration["verified"].startswith("official_text")
  print("PASS: 47 distinct prefectures, sources, bounds, timeseries, evidence-gap labels")
 if __name__=="__main__":check()
