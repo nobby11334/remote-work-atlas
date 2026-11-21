@@ -3,6 +3,9 @@ on:
   push:
     paths:
       - "data/**"
+      - "app.js"
+      - "index.html"
+      - "styles.css"
       - "scripts/validate_data.py"
       - ".github/workflows/validate-data.yml"
   schedule:
@@ -18,3 +21,18 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify published datasets and missing-data labels
         run: python3 scripts/validate_data.py
+      - name: Check JavaScript syntax
+        run: node --check app.js
+      - name: Check HTML document and interactive sections
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          s=Path("index.html").read_text(encoding="utf-8")
+          required=["migration-year","migration-sex","migration-age","migration-chart","youth-migration-chart","analysis-messages","pref-select","evidence-streams"]
+          for name in required:
+              assert 'id="'+name+'"' in s, name
+          class Check(HTMLParser): pass
+          Check().feed(s)
+          print("PASS HTML sections and parser")
+          PY
