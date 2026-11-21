@@ -1,0 +1,30 @@
+name: Watch annual prefectural migration report
+on:
+  schedule:
+    - cron: "5 3 8 * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/watch_population_migration.py"
+      - ".github/workflows/watch-population-migration.yml"
+permissions:
+  contents: read
+  issues: write
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check official age-sex-prefecture population migration table
+        id: detect
+        run: python3 scripts/watch_population_migration.py
+      - name: Open a verification task if a new annual table is detected
+        if: steps.detect.outputs.found == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing=$(gh issue list --state all --search "2026年 年報 表3-3 検証 in:title" --json number --jq 'length')
+          if [ "$existing" = "0" ]; then
+            gh issue create --title "2026年 年報 表3-3 検証：若年男女の県別転入超過" --body-file /tmp/migration-estat.md
+          fi
